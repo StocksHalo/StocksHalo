@@ -10,6 +10,9 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
+
+    
+
     <!-- *********** -->
 
     {% if title %}
@@ -33,8 +36,24 @@
               <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
                 <a class="nav-item nav-link" href="{{ url_for('home') }}">Blog</a>
-                <a class="nav-item nav-link" href="{{ url_for('stock_list') }}">Stock List</a>
+                <!-- <a class="nav-item nav-link" href="{{ url_for('stock_list') }}">Stock List</a> -->
+                
+                
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Markets
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ url_for('stock_list') }}">Stocks</a>
+                    <a class="dropdown-item" href="{{ url_for('stock_list') }}">Crypto</a>
+                    
+                  </div>
+                </div>
+                
                 <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+
+
+
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
@@ -52,6 +71,7 @@
           </div>
         </nav>
       </header>
+      
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
@@ -83,6 +103,8 @@
           <div class="col-md-4">
             <div class="content-section">
               <h3>Our Sidebar</h3>
+              <p> </p>
+              <p> </p>
               <p class='text-muted'>You can put any information here you'd like.
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-light">News</li>

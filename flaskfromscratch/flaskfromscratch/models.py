@@ -59,4 +59,4 @@ class Stock(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.id}', '{self.symbol}', '{self.type}')"
+        return f"Post('{self.id}', '{self.symbol}', '{self.exchange}', '{self.Type}')"

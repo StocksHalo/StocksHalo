@@ -9,7 +9,7 @@ import config
 
 print(config.BASE_DIR)
 
-connection = sqlite3.connect(os.path.join(config.BASE_DIR, 'app.db'))
+connection = sqlite3.connect(os.path.join(config.BASE_DIR, 'site.db'))
 
 cursor = connection.cursor()
 
@@ -17,8 +17,4 @@ cursor.execute("""
         DELETE FROM stock
 """)
 
-
-
-symbols = [
-    
-]
+connection.commit()

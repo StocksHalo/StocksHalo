@@ -39,7 +39,21 @@
 				<div class="navbar-nav mr-auto">
 					<a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
 					<a class="nav-item nav-link" href="{{ url_for('home') }}">Blog</a>
-					<a class="nav-item nav-link" href="{{ url_for('stock_list') }}">Stock List</a>
+					<!-- <a class="nav-item nav-link" href="{{ url_for('stock_list') }}">Stock List</a> -->
+
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  Markets
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						  <a class="dropdown-item" href="{{ url_for('stock_list') }}">Stocks</a>
+						  <a class="dropdown-item" href="{{ url_for('stock_list') }}">Crypto</a>
+						  
+						</div>
+					  </div>
+
+
+
 					<a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
 				  </div>
 

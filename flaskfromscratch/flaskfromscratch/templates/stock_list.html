@@ -10,7 +10,7 @@
 
 
   
-        <h1>Stock List</h1>
+        <h2>Stock List</h2>
 
         <form method="GET">
             <select name="filter">
@@ -50,7 +50,7 @@
             <tr>
                 <td>{{ stock.id }}</td>
                 <td>{{ stock.symbol }}</td>
-                <td class="right aligned"> <a href="/stock/{{ stock.symbol }}">{{ stock.name }}</a> </td>
+                <td class="right aligned"> <a href="{{ url_for('stock_detail', stock_symbol=stock.symbol) }}">{{ stock.name }}</a> </td>
                 <td>{{ stock.currency }}</td>
                 <td>{{ stock.exchange }}</td>
                 <td>{{ stock.country }}</td>

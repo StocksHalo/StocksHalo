@@ -56,23 +56,38 @@ def home():
 
 
 
-@app.route("/stock_list")
+@app.route("/stock")
 @login_required
 def stock_list():
     page = request.args.get('page', 1, type=int)
-    stocks = Stock.query.order_by(Stock.id).paginate(page=page, per_page=100)
+    stocks = Stock.query.order_by(Stock.id).paginate(page=page, per_page=20)
+    print(stocks)
     return render_template('stock_list.html', title='Stock List',stocks=stocks)
 
 
-@app.route("/stock_list/<string:stock_symbol>")
-def stock_detail():
-    return (Hello)
+@app.route("/stock/<string:stock_symbol>", methods=['GET', 'POST'])
+def stock_detail(stock_symbol):
+    # stock_symbol = request.args.get('stock_symbol')
+    print(stock_symbol)
+    # stock = Stock.query.get(stock_symbol)
+    stock = Stock.query.filter_by(symbol=stock_symbol).first_or_404(description='There is no data with {}'.format(stock_symbol))
+    print()
+    print(stock)
+    print()
+    return render_template('stock_detail.html', title=stock_symbol, stock=stock)
+    # return ''' <h1>The language value is: {}</h1>'''.format(stock_symbol)
+
+
+# @app.route("/stocks/<string:stock_symbol>")
+# def stock_detail():
+#     symbol = request.args.get('symbol', 1, type=string)
+#     render_template ('stock_detail.html', title=symbol)
 
 
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about2.html', title='About')
 
 
 @app.route("/register", methods=['GET', 'POST'])

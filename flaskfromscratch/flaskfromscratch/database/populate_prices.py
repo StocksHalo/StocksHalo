@@ -15,7 +15,7 @@ for row in rows:
     symbol = row['symbol']
     symbols.append(symbol)
     stock_dict[symbol] = row['id']
-# print(stock_dict)
+print(stock_dict)
 print(symbols[:20])
 
 
