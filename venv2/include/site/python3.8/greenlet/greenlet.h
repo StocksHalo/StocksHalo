@@ -142,4 +142,5 @@ static void** _PyGreenlet_API = NULL;
 #ifdef __cplusplus
 }
 #endif
-#endif /* !Py_GREENLETOBJECT_H */
+#endif 
+/* !Py_GREENLETOBJECT_H */
