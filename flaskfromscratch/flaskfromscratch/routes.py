@@ -1,13 +1,17 @@
-import os
+import os, csv
 import secrets
 from PIL import Image
 
-from flask  import render_template, url_for, flash, redirect, request, abort
+from flask  import render_template, url_for, flash, redirect, request, abort, jsonify
 from flaskfromscratch import app, db, bcrypt, mail
 from flaskfromscratch.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
-from flaskfromscratch.models import User, Post, Stock
+from flaskfromscratch.models import User, Post, Stock, Crypto
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
+
+
+from binance.client import Client
+from binance.enums import *
 
 
 
@@ -65,6 +69,16 @@ def stock_list():
     return render_template('stock_list.html', title='Stock List',stocks=stocks)
 
 
+# crypto
+@app.route("/crypto")
+@login_required
+def crypto_list():
+    page = request.args.get('page', 1, type=int)
+    cryptos = Crypto.query.order_by(Crypto.id).paginate(page=page, per_page=20)
+    # print(cryptos)
+    return render_template('crypto_list.html', title='Crypto List',cryptos=cryptos)
+
+
 @app.route("/stock/<string:stock_symbol>", methods=['GET', 'POST'])
 def stock_detail(stock_symbol):
     # stock_symbol = request.args.get('stock_symbol')
@@ -76,6 +90,18 @@ def stock_detail(stock_symbol):
     print()
     return render_template('stock_detail.html', title=stock_symbol, stock=stock)
     # return ''' <h1>The language value is: {}</h1>'''.format(stock_symbol)
+
+
+@app.route("/crypto/<string:crypto_symbol>", methods=['GET', 'POST'])
+def crypto_detail(crypto_symbol):
+    # stock_symbol = request.args.get('stock_symbol')
+    print(crypto_symbol)
+    # stock = Stock.query.get(stock_symbol)
+    crypto = Crypto.query.filter_by(symbol=crypto_symbol).first_or_404(description='There is no data with {}'.format(crypto_symbol))
+    print()
+    print(crypto)
+    print()
+    return render_template('crypto_detail.html', title=crypto_symbol, crypto=crypto)
 
 
 # @app.route("/stocks/<string:stock_symbol>")
@@ -299,3 +325,27 @@ def page_not_found(e):
 def page_not_found(e):
     # note that we set the 404 status explicitly
     return render_template('errors/500.html'), 590
+
+@app.route('/history')
+def history():
+    sym = request.args.get('crypto_symbol')
+    print(sym)
+    client = Client('FULgMs4X94itKmsHtke5J7SMyb6fUPXENomyS3iE6VO0sXnrLmoc5rTOegEn5248', 'CYyhgBG0xknpS7pD1iPDigzXYTr957gV3p88aqlqPpZmDzyb8sbWCBRYv55FaU9v', tld='us')
+    
+    candlesticks = client.get_historical_klines(f"{sym.upper()}USDT", Client.KLINE_INTERVAL_15MINUTE, "1 Jul, 2020", "12 Jul, 2020")
+    
+
+    processed_candlesticks = []
+
+    for data in candlesticks:
+        candlestick = { 
+            "time": data[0] / 1000, 
+            "open": data[1],
+            "high": data[2], 
+            "low": data[3], 
+            "close": data[4]
+        }
+
+        processed_candlesticks.append(candlestick)
+
+    return jsonify(processed_candlesticks)

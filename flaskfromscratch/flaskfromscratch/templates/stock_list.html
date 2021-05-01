@@ -59,6 +59,12 @@
             </tr>
 
             {% endfor %}
+
+            
+
+
+
+
     {% for page_num in stocks.iter_pages() %}
       {% if page_num %}
         {% if stocks.page == page_num %}
@@ -72,6 +78,9 @@
 
 
             {% endfor %}
+
+
+      
               
             </tbody>
           </table>
