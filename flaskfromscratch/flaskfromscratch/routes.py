@@ -13,6 +13,9 @@ from flask_mail import Message
 from binance.client import Client
 from binance.enums import *
 
+from newsapi import NewsApiClient
+
+
 
 
 
@@ -349,3 +352,32 @@ def history():
         processed_candlesticks.append(candlestick)
 
     return jsonify(processed_candlesticks)
+
+
+@app.route('/news')
+def news():
+    newsapi = NewsApiClient(api_key="6e4b61167b3942538283343ece8437c9")
+    topheadlines = newsapi.get_top_headlines(sources="business-insider")
+
+
+    articles = topheadlines['articles']
+
+    desc = []
+    news = []
+    img = []
+
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+
+        news.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+
+
+
+    mylist = zip(news, desc, img)
+
+
+    return render_template('news.html', context=mylist, title='News')
