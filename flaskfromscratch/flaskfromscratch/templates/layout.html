@@ -24,8 +24,9 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="site-header">
+  <!-- NAVBAR -->
+  <header class="site-header">
+      
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="container">
             <a class="navbar-brand mr-4 font-weight-bold" href="{{ url_for('index') }}">STOCKSHALO</a>
@@ -67,12 +68,14 @@
               {% else %}
                 <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
                 <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
-              {% endif %}
+              
 
               </div>
             </div>
           </div>
         </nav>
+
+        {% endif %}
       </header>
       
       <main role="main" class="container">
@@ -103,6 +106,7 @@
 
 
           </div>
+          {% if title == 'Blog' %}
           <div class="col-md-4">
             <div class="content-section">
               <h3>Our Sidebar</h3>
@@ -118,6 +122,7 @@
               </p>
             </div>
           </div>
+          {% endif %}
         </div>
       </main>
 
