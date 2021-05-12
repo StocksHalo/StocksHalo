@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
-                <a class="nav-item nav-link" href="{{ url_for('home') }}">Blog</a>
+                <a class="nav-item nav-link" href="{{ url_for('home') }}">Insight</a>
                 <!-- <a class="nav-item nav-link" href="{{ url_for('stock_list') }}">Stock List</a> -->
                 
                 
@@ -105,24 +105,29 @@
 
 
 
-          </div>
-          {% if title == 'Blog' %}
+        </div>
           <div class="col-md-4">
             <div class="content-section">
-              <h3>Our Sidebar</h3>
+              <h3>Sidebar</h3>
               <p> </p>
               <p> </p>
               <p class='text-muted'>You can put any information here you'd like.
                 <ul class="list-group">
+<<<<<<< HEAD
                   <li class="list-group-item list-group-item-light"><a href="{{ url_for('news') }}">News</a></li>
                   <li class="list-group-item list-group-item-light"><a href="ayo">Announcements</a></li>
                   <li class="list-group-item list-group-item-light"><a href="{{ url_for('calendar') }}">Calendar</a></li>
                   <li class="list-group-item list-group-item-light">etc</li>
+=======
+                  <li class="list-group-item list-group-item-light">News</li>
+                  <li class="list-group-item list-group-item-light">Announcements</li>
+                  <li class="list-group-item list-group-item-light">Calendars</li>
+                  <li class="list-group-item list-group-item-light">Insight</li>
+>>>>>>> 12315a89e371664a8cde239c64c8f03e152d2ab7
                 </ul>
               </p>
             </div>
           </div>
-          {% endif %}
         </div>
       </main>
 
