@@ -5,7 +5,7 @@ app = Flask('FullCalendar Demo')
 events = [
   {
     'todo' : 'Id-Ul-Fitr (Ramzan Id)',
-    'date' : '2021-05-13',
+    'date' : '2021-05-14',
   },
   {
     'todo' : 'Republic Day',
