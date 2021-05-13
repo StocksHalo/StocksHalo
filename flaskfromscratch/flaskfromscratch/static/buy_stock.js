@@ -1,8 +1,8 @@
 window.onload = function() {
 
     // Get references to elements on the page.
-    //var form1 = document.getElementById('quantity-buy-form');
-    //var form2 = document.getElementById('quantity-sell-form');
+    var form1 = document.getElementById('quantity-buy-form');
+    var form2 = document.getElementById('quantity-sell-form');
     //var quantityCaptured1 = document.getElementById('buy-qty');
     //var quantityCaptured2 = document.getElementById('sell-qty');
     //var ptagId = document.getElementById('transaction-history');
