@@ -11,11 +11,11 @@ window.onload = function() {
     var stockPriceBuy = document.getElementById('current-stock-price-buy')
     var stockPriceSell = document.getElementById('current-stock-price-sell')
   
-    form1.onsubmit = function() {
+    form1.onsubmit = function(e) {
         alert("Market Closed: Can't Place Order");
         
-    /* e.preventDefault();
-  
+        e.preventDefault();
+  /*
       // Retrieve the message from the textarea.
       var buyquantity = parseInt(quantityCaptured1.value);
       var buySockPrice = parseInt(stockPriceBuy.value);
@@ -41,11 +41,10 @@ window.onload = function() {
     */
     };
 
-    form2.onsubmit = function()
-    {
+    form2.onsubmit = function(e) {
         alert("Market Closed: Can't Place Order");
-       /* e.preventDefault();
-  
+        e.preventDefault();
+  /*
         // Retrieve the message from the textarea.
         var sellquantity = parseInt(quantityCaptured2.value);
         var sellSockPrice = parseInt(stockPriceSell.value);
