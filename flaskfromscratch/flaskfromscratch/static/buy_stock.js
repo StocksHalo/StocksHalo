@@ -12,6 +12,8 @@ window.onload = function() {
     var stockPriceSell = document.getElementById('current-stock-price-sell')
   
     form1.onsubmit = function(e) {
+        alert("Market Closed: Can't Place Order");
+        /*
       e.preventDefault();
   
       // Retrieve the message from the textarea.
@@ -36,10 +38,12 @@ window.onload = function() {
       stockPriceBuy.value = '';
   
       return false;
+    */
     };
 
     form2.onsubmit = function(e) {
-        e.preventDefault();
+        alert("Market Closed: Can't Place Order");
+       /* e.preventDefault();
   
         // Retrieve the message from the textarea.
         var sellquantity = parseInt(quantityCaptured2.value);
@@ -63,5 +67,6 @@ window.onload = function() {
         stockPriceSell.value = '';
     
         return false;
-      };
+      */
+    };
   };
