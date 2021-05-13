@@ -1,23 +1,20 @@
 
 
-
-
-
-
 <html lang="en">
 <head>
     
     <title>Charts</title>
 </head>
 <body>
+    <script src="../static/buy_stock.js"></script>
     {% extends "layout.html" %}
     
     {% block content %}
     <p>Easter Egg</p>
 
-<p>LMAO</p>
+<!-- <p>LMAO</p>
 
-<p> .</p>
+<p> .</p> -->
 
     <h1><a href="{{ url_for('stock_list') }}">Stocks</a> <i class="angle double right icon"></i> {{ stock.name }}
     </h1>
@@ -88,15 +85,47 @@
 
   <div class="container">
 
-    <form action="#" method="POST">
-        <input class="btn btn-primary" type="submit" value="BUY">
+    Balance (in $) = 
+    <p id="current-balance">1000</p>
+    Quantity (in Units) = 
+    <p id="current-quantity">50</p>
+
+    <br>
+
+    <form action="#" method="POST" id="quantity-buy-form">
+        <input type="text" name="StockPriceBuy" id="current-stock-price-buy" placeholder="Enter current stock price from graph" required>
+        <input type="text" name="quantity-buy" id="buy-qty" placeholder="Quantity to buy" required>
+        <!-- <input class="btn btn-primary" type="submit" value="BUY"> -->
+        <div>
+            <button class="btn btn-primary" type="submit">
+                <span>
+                    Buy stocks
+                </span>
+            </button>
+        </div>
     </form>
       
-    <form action="#" method="POST">
-        <input class="btn btn-danger" type="submit" value="SELL">
+    <form action="#" method="POST" id="quantity-sell-form">
+        <input type="text" name="StockPriceSell" id="current-stock-price-sell" placeholder="Enter current stock price from graph" required>
+        <input type="text" name="quantity-sell" id="sell-qty" placeholder="Quantity to sell" required>
+        <!-- <input class="btn btn-primary" type="submit" value="BUY"> -->
+        <div>
+            <button class="btn btn-danger" type="submit">
+                <span>
+                    Sell stocks
+                </span>
+            </button>
+        </div>
     </form>
 
 
+  </div>
+
+  <div class="container">
+      <h2>Transaction history</h2>
+      <p id="transaction-history">
+
+      </p>
   </div>
 
 
